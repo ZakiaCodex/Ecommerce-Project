@@ -11,7 +11,7 @@ id=2;
   return (
     <div>
     {/* <Employee id={[3,1]} /> */}
-    <Profile id={[3,2]} studentinfo="student information"/> 
+    <Profile id={[3,4]} studentinfo="student information"/> 
 {/* <Student studentinfo="Student ID Card" /> */}
 
     {/* <Profile  /> */}

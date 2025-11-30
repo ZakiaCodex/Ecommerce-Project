@@ -6,7 +6,7 @@ function Profile (props) {
     { studentid: 2, name: "Ali", phone: "033322211", bio: "I love coding." },
     { studentid: 3, name: "Sara", phone: "030012345", bio: "Frontend developer." }
   ];
-let res=students.filter((std)=>{
+let res=students.find((std)=>{
  return  props.id .includes(std.studentid);
 })
   return (
@@ -15,17 +15,18 @@ let res=students.filter((std)=>{
 
       {/* 2: Map data in card format - **Added the .parent div here** */}
       <div className="parent"> 
-        {res.map((std) => {
-          return (
-            <div key={std.studentid} className="card">
-            
-              <h2>ID: {std.studentid}</h2>
-              <h3>Name: {std.name}</h3>
-              <p>Phone: {std.phone}</p>
-              <p>Bio: {std.bio}</p>
+      {
+        res? (
+            <div key={res.studentid} className="card">
+              <h2>ID: {res.studentid}</h2>
+              <h3>Name: {res.name}</h3>
+              <p>Phone: {res.phone}</p>
+              <p>Bio: {res.bio}</p>
             </div>
-          );
-        })}
+          )
+        :
+       ("student not found")
+      }
       </div>
     </>
   );
