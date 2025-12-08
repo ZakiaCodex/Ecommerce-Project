@@ -1,29 +1,96 @@
-function Employee(props){
-let employee = [
-  { id: 1, name: "Zara", position: "Manager", salary: 80000, department: "HR" },
-  { id: 2, name: "Ali", position: "Developer", salary: 95000, department: "IT" },
-  { id: 3, name: "Hassan", position: "Designer", salary: 90000, department: "IT" },
-  { id: 4, name: "Sara", position: "Accountant", salary: 65000, department: "Finance" },
-  { id: 5, name: "Zakia", position: "Team Lead", salary: 400, department: "IT" }
-];
- let res= employee.filter((emp)=>{
- return props.id.includes(emp.id)
-    })
-return(
-  <div className="parent">
-   {res.map((emp,index)=>{
-    return(
-      <div className="child">
- <h2 key={index}> {emp.id}:</h2>
- <h3>Name: {emp.name}</h3>
- <h3>Position: {emp.position}</h3>
- <h3> Salary: {emp.salary}</h3>
- <h3> Department: {emp.department}</h3> 
+import { useState } from "react";
+
+function Employee() {
+
+  const [firstname, updatefirstname] = useState("")
+  const [lastname, updatelastname] = useState("")
+  const [password, updatepassword] = useState("")
+    const [email, updateemail] = useState("")
+     
+  const [students, setstudents] = useState([])
+
+  return (
+
+    <>
+      <div className="parent">
+        <div className="card">
+          <form onSubmit={(event) => {
+            event.preventDefault()
+
+            setstudents([...students, { firstname, lastname, password,email }])
+
+            updatefirstname("")
+            updatelastname("")
+             updatepassword("")
+             updateemail("")
+
+          }}>
+
+            <h2>Registration form</h2>
+            <input type="text" placeholder="Enter your name"  required value={firstname} onChange={(e) => {
+              updatefirstname(e.target.value)
+            }} />
+
+            <br />
+
+            <input type="text" placeholder="Enter last name" value={lastname} onChange={(e) => {
+              updatelastname(e.target.value)
+            }} />
+            <br />
+
+ <input type="email" placeholder="Enter email" value={email}  required onChange={(e) => {
+              updateemail(e.target.value)
+            }} />
+            <br />
+
+             <input type="password" placeholder="Enter Password" required value={password} onChange={(e) => {
+              updatepassword(e.target.value)
+            }} />
+            <br />
+            <button>Sign up </button>
+          </form>
+        </div>
 </div>
-    )
-    })}
-    
-  </div>
-)
+
+      {students.length > 0 && (
+         <div className="parent">
+        <div className="card">
+        <table>
+          <tr>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>Email</th>
+            <th>Password</th>
+          </tr>
+
+          {students.map((s, i) => (
+            <tr key={i}>
+              <td>{s.firstname}</td>
+              <td>{s.lastname}</td>
+                <td>{s.email}</td>
+              <td>{s.password}</td>
+             
+            </tr>
+          )
+          )}
+
+
+
+
+        </table>
+        </div>
+        </div>
+      )}
+
+
+    </>
+  )
+
+
+
+
+
+
 }
+
 export default Employee
