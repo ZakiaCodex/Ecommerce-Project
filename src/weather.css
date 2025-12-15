@@ -1,0 +1,26 @@
+.search-box {
+  display: flex;
+  align-items: center;
+  background: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  gap: 8px;
+}
+
+.search-box input {
+  border: none;
+  outline: none;
+  flex: 1;
+  font-size: 16px;
+}
+
+.loc-icon {
+  font-size: 22px;
+  color: #2563eb;
+}
+
+.search-icon {
+  font-size: 22px;
+  cursor: pointer;
+  color: #2563eb;
+}
