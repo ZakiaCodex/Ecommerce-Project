@@ -1,0 +1,42 @@
+/* HEADER */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color:#031944;
+  padding: 4px 30px; /* top-bottom 20px, left-right 15px */
+  margin: 10px;
+}
+h3
+.logo{
+    width:20px;
+   
+}
+
+/* 3. Remove list styles */
+ul, ol {
+  list-style: none;
+}
+
+/* 4. Remove default link styles */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+.navbar ul {
+  
+  display: flex;
+  gap: 20px;
+  color:rgb(237, 237, 237) ;
+}
+
+.login button {
+  padding: 8px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+   background-color:#FFD90C;
+   color: black;
+  /* margin-right: 40px; */
+}
