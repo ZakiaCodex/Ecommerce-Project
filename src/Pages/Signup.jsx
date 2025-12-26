@@ -8,25 +8,26 @@ export default function SignupForm() {
     const[Firstname,setFirstname]=useState("")
      const[Lastname,setLastname]=useState("")
      const[email,setEmail]=useState("")
+     const[submited, setSubmitted]=useState(false)
 
-     
+ const handleSubmit=(event)=>{
+event.preventDefault()
+setSubmitted(true)
+ }
 
-      
-  return (
+ return (
     <div style={{ maxWidth: "600px", margin: "0 auto", padding: "20px" }}>
-    <h2>Create Account</h2>
-    <h3 style={{color:"white",marginBottom:"10px"}}>Please register account detail</h3>
+      <h2>Create Account</h2>
+      <h3 style={{ color: "white", marginBottom: "10px" }}>
+        Please register account detail
+      </h3>
 
-      <form onSubmit={(event)=>{
-        event.preventDefault()
-       console.log(Firstname)
- console.log(setFirstname())
-      }}>
+{!submited ? ( <form onSubmit={handleSubmit}>
         <div style={{ marginBottom: "15px" }}>
           <label htmlFor="firstName">First Name</label>
           <input
             type="text"
-            value={Firstname}
+            value={Lastname}
             placeholder="First Name"
             onChange={(e)=>{
 setFirstname(e.target.value)
@@ -55,7 +56,7 @@ setLastname(e.target.value)
            value={email}
             placeholder="Email"
               onChange={(e)=>{
-setemail(e.target.value)
+setEmail(e.target.value)
               }}
             style={{ width: "100%", padding: "8px", marginTop: "5px" }}
           />
@@ -86,7 +87,21 @@ setemail(e.target.value)
         >
           Already have account? <a href="#" style={{ color: "#fff" }}>Log in</a>
         </div>
-      </form>
+      </form>):(
+        <table>
+  <tr>
+    <th>Company</th>
+    <th>Contact</th>
+    <th>Country</th>
+  </tr>
+                <tr>
+                <td>{Firstname}</td>
+                <td>{Lastname}</td>
+                <td>{email}</td>
+              </tr>
+
+</table>
+      )}
     </div>
-  );
+  )
 }
