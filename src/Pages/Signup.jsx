@@ -14,8 +14,8 @@ export default function SignupForm() {
       
   return (
     <div style={{ maxWidth: "600px", margin: "0 auto", padding: "20px" }}>
-    <h1>Create Account</h1>
-    <h2>Please register account detail</h2>
+    <h2>Create Account</h2>
+    <h3 style={{color:"white",marginBottom:"10px"}}>Please register account detail</h3>
 
       <form onSubmit={(event)=>{
         event.preventDefault()
