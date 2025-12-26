@@ -7,28 +7,22 @@ export default function Shop() {
   const [search, setSearch] = useState("");
    const [minPrice, setMinPrice] = useState("");
    const [maxPrice, setMaxPrice] = useState("");
+   const[color,setColor]=useState("")
   const [filtered, setFiltered] = useState(products);
 
   // 🔍 Search (only on button click)
-  const handleSearch=()=>{
-    const result=products.filter((item)=>(
-      item.title.toLowerCase().includes(search.toLowerCase())
-    ))
+  const handleFilter=()=>{
+const result=products.filter((item)=>{
+    return (
+      item.title.toLowerCase().includes(search.toLowerCase())&& 
+   (!minPrice ||item.price >= Number(minPrice)) &&
+   (!maxPrice || item.price <=Number(maxPrice))&&
+   (!color || item.color===color)
+    )
+  })
     setFiltered(result)
   }
-
-// Filter
-const handleFilter=()=>{
-  const result=products.filter((item)=>{
-    return (
-   (!minPrice ||item.price >= Number(minPrice)) &&
-   (!maxPrice || item.price <=Number(maxPrice))
-    )
-    })
-
-  setFiltered(result)
-}
-
+  
   return (
     <>
       {/* SEARCH */}
@@ -42,7 +36,7 @@ const handleFilter=()=>{
           onChange={(e) => setSearch(e.target.value)}
         />
 
-        <button onClick={handleSearch}>Search</button>
+        <button onClick={handleFilter}>Search</button>
       </div>
 
       <div className="page">
@@ -68,7 +62,7 @@ const handleFilter=()=>{
           />
 
  <button
-            className="Apply filter"
+            className="Applyfilter"
             onClick={handleFilter} > Apply</button>
           <button
             className="reset-btn"
@@ -80,6 +74,21 @@ const handleFilter=()=>{
           >
             Reset Filters
           </button>
+
+
+          <div className="ByColor" style={{marginTop:"13px"}}>
+            <select value={color} onChange={(e) =>{
+              setColor(e.target.value) 
+              handleFilter()
+            }}
+            >
+  <option value="">All Colors</option>
+  <option value="black">Black</option>
+  <option value="green">Green</option>
+  <option value="yellow">Yellow</option>
+</select>
+
+          </div>
         </aside>
 
         {/* PRODUCTS */}

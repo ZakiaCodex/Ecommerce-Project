@@ -1,13 +1,14 @@
 
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-export default function SignupForm() {
+
+export default function Login() {
 
 
 
     const[Firstname,setFirstname]=useState("")
      const[Lastname,setLastname]=useState("")
      const[email,setEmail]=useState("")
+     const[password,setPassword]=useState("")
      const[submited, setSubmitted]=useState(false)
 
  const handleSubmit=(event)=>{
@@ -17,38 +18,11 @@ setSubmitted(true)
 
  return (
     <div style={{ maxWidth: "600px", margin: "0 auto", padding: "20px" }}>
-      <h2>Create Account</h2>
-      <h3 style={{ color: "white", marginBottom: "10px" }}>
-        Please register account detail
-      </h3>
+      <h2>Login</h2>
+      
 
 {!submited ? ( <form onSubmit={handleSubmit}>
-        <div style={{ marginBottom: "15px" }}>
-          <label htmlFor="firstName">First Name</label>
-          <input
-            type="text"
-            value={Lastname}
-            placeholder="First Name"
-            onChange={(e)=>{
-setFirstname(e.target.value)
-            }}
-            style={{ width: "100%", padding: "8px", marginTop: "5px" }}
-          />
-        </div>
-
-        <div style={{ marginBottom: "15px" }}>
-          <label htmlFor="lastName">Last Name</label>
-          <input
-            type="text"
-            value={Lastname}
-            placeholder="Last Name"
-               onChange={(e)=>{
-setLastname(e.target.value)
-               }}
-            style={{ width: "100%", padding: "8px", marginTop: "5px" }}
-          />
-        </div>
-
+        
         <div style={{ marginBottom: "15px" }}>
           <label htmlFor="email">Email</label>
           <input
@@ -58,6 +32,19 @@ setLastname(e.target.value)
               onChange={(e)=>{
 setEmail(e.target.value)
               }}
+            style={{ width: "100%", padding: "8px", marginTop: "5px" }}
+          />
+        </div>
+
+        <div style={{ marginBottom: "15px" }}>
+          <label htmlFor="firstName">First Name</label>
+          <input
+            type="password"
+            value={password}
+            placeholder="Password"
+            onChange={(e)=>{
+setPassword(e.target.value)
+            }}
             style={{ width: "100%", padding: "8px", marginTop: "5px" }}
           />
         </div>
@@ -73,7 +60,7 @@ setEmail(e.target.value)
 
         <button
           type="submit">
-          CREATE
+          Login
         </button>
 
         <div
@@ -85,28 +72,24 @@ setEmail(e.target.value)
             padding: "15px",
           }}
         >
-          Already have account?  <a style={{color:"white",marginLeft:"10px",border:"2px solid yellow",padding:"6px" }}>
+          Already have account? <a style={{color:"white",marginLeft:"10px",border:"2px solid yellow",padding:"6px" }}>
             <Link to="/Login">Login</Link>
           </a>
         </div>
       </form>):(
-    <table className="styled-table">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>LastName</th>
-      <th>Email</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>{Firstname}</td>
-      <td>{Lastname}</td>
-      <td>{email}</td>
-    </tr>
-  </tbody>
-</table>
+        <table>
+  <tr>
+    <th>Company</th>
+    <th>Contact</th>
+    <th>Country</th>
+  </tr>
+                <tr>
+                <td>{Firstname}</td>
+                <td>{Lastname}</td>
+                <td>{email}</td>
+              </tr>
 
+</table>
       )}
     </div>
   )

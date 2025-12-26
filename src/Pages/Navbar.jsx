@@ -29,6 +29,9 @@ export default function Navbar() {
           <button>
             <Link to="/signup">Signup</Link>
           </button>
+             <button style={{marginLeft:"20px"}}>
+            <Link to="/Login">Login</Link>
+          </button>
         </div>
       </div>
     </>

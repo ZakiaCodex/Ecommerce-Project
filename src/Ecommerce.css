@@ -66,3 +66,41 @@ h3{
   border: 1px solid white;
   padding: 20px;
 }
+/* table */
+.styled-table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 15px;
+ 
+  min-width: 500px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.styled-table thead tr {
+  background-color: #FFD90C;
+  color: #000000;
+  text-align: left;
+  font-weight: bold;
+}
+
+.styled-table th,
+.styled-table td {
+  padding: 13px 15px;
+}
+
+.styled-table tbody tr {
+  border-bottom: 2px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:hover {
+  background-color: #f1f1f1;
+  color: black;
+  transform: scale(1.01);
+  transition: all 0.3s ease;
+}
