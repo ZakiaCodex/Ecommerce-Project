@@ -1,42 +1,55 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { MdShoppingCart } from "react-icons/md";
 import { products } from "./Product";
 import "./Shop.css";
 
 export default function Shop() {
   const [search, setSearch] = useState("");
-  const [minPrice, setMinPrice] = useState("");
-  const [maxPrice, setMaxPrice] = useState("");
+   const [minPrice, setMinPrice] = useState("");
+   const [maxPrice, setMaxPrice] = useState("");
   const [filtered, setFiltered] = useState(products);
 
-  useEffect(() => {
-    const result = products.filter((item) => {
-      const matchesSearch = item.title
-        .toLowerCase()
-        .includes(search.toLowerCase());
-      const matchesMin = !minPrice || item.price >= Number(minPrice);
-      const matchesMax = !maxPrice || item.price <= Number(maxPrice);
-      return matchesSearch && matchesMin && matchesMax;
-    });
+  // 🔍 Search (only on button click)
+  const handleSearch=()=>{
+    const result=products.filter((item)=>(
+      item.title.toLowerCase().includes(search.toLowerCase())
+    ))
+    setFiltered(result)
+  }
 
-    setFiltered(result);
-  }, [search, minPrice, maxPrice]);
+// Filter
+const handleFilter=()=>{
+  const result=products.filter((item)=>{
+    return (
+   (!minPrice ||item.price >= Number(minPrice)) &&
+   (!maxPrice || item.price <=Number(maxPrice))
+    )
+    })
+
+  setFiltered(result)
+}
 
   return (
     <>
       {/* SEARCH */}
       <div className="search-box">
         <h2>Search Products</h2>
+
         <input
-          type="search"
+          type="text"
           placeholder="Search phones, laptops, accessories..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
+
+        <button onClick={handleSearch}>Search</button>
       </div>
 
       <div className="page">
-        {/* FILTER */}
+      
+
+
+ {/* FILTER */}
         <aside className="filter-box">
           <h3>Price Filter</h3>
 
@@ -54,6 +67,9 @@ export default function Shop() {
             onChange={(e) => setMaxPrice(e.target.value)}
           />
 
+ <button
+            className="Apply filter"
+            onClick={handleFilter} > Apply</button>
           <button
             className="reset-btn"
             onClick={() => {

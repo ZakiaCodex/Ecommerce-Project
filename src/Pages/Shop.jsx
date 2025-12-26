@@ -10,3 +10,32 @@ export default function Shop() {
     </>
   );
 }
+    // {/* FILTER */}
+    //     <aside className="filter-box">
+    //       <h3>Price Filter</h3>
+
+    //       <input
+    //         type="number"
+    //         placeholder="Min price"
+    //         value={minPrice}
+    //         onChange={(e) => setMinPrice(e.target.value)}
+    //       />
+
+    //       <input
+    //         type="number"
+    //         placeholder="Max price"
+    //         value={maxPrice}
+    //         onChange={(e) => setMaxPrice(e.target.value)}
+    //       />
+
+    //       <button
+    //         className="reset-btn"
+    //         onClick={() => {
+    //           setMinPrice("");
+    //           setMaxPrice("");
+    //           setSearch("");
+    //         }}
+    //       >
+    //         Reset Filters
+    //       </button>
+    //     </aside>
