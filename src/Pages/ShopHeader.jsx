@@ -8,6 +8,7 @@ export default function Shop() {
   const [minPrice, setMinPrice] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
   const [color, setColor] = useState("");
+  const [brand, setBrand] = useState("");
   const [filtered, setFiltered] = useState(products);
 
   // 🔍 Search (only on button click)
@@ -17,7 +18,8 @@ export default function Shop() {
         item.title.toLowerCase().includes(search.toLowerCase()) &&
         (!minPrice || item.price >= Number(minPrice)) &&
         (!maxPrice || item.price <= Number(maxPrice)) &&
-        (!color || item.color === color)
+        (!color || item.color === color) &&
+        (!brand || item.Brand.toLowerCase().includes(brand.toLowerCase()))
       );
     });
     setFiltered(result);
@@ -64,6 +66,7 @@ export default function Shop() {
           </button>
           <button
             className="reset-btn"
+            style={{ marginBottom: "15px", marginTop: "10px" }}
             onClick={() => {
               setMinPrice("");
               setMaxPrice("");
@@ -73,19 +76,51 @@ export default function Shop() {
             Reset Filters
           </button>
 
-          <div className="ByColor" style={{ marginTop: "13px" }}>
-            <select
-              value={color}
+          <div className="color-filter">
+            <h3>Filter by Color</h3>
+            <div className="color-options">
+              {["black", "green", "yellow"].map((c) => (
+                <span
+                  key={c}
+                  className="color-circle"
+                  style={{
+                    backgroundColor: c,
+                    border: color === c ? "2px solid #000" : "1px solid #ccc",
+                  }}
+                  onClick={() => {
+                    setColor(c);
+                    handleFilter();
+                  }}
+                ></span>
+              ))}
+              <span
+                className="color-circle"
+                style={{
+                  backgroundColor: "transparent",
+                  border: color === "" ? "3px solid #000" : "1px solid #ccc",
+                  fontSize: "14px",
+                }}
+                onClick={() => {
+                  setColor("");
+                  handleFilter();
+                }}
+              >
+                All
+              </span>
+            </div>
+          </div>
+
+          <div className="Bybrand">
+            <h3>By Brand</h3>
+            <input
+              type="text"
               onChange={(e) => {
-                setColor(e.target.value);
-                handleFilter();
+                setBrand(e.target.value);
               }}
-            >
-              <option value="">All Colors</option>
-              <option value="black">Black</option>
-              <option value="green">Green</option>
-              <option value="yellow">Yellow</option>
-            </select>
+            />
+            <button type="search" onClick={handleFilter}>
+              Click
+            </button>
           </div>
         </aside>
 

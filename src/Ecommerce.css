@@ -103,3 +103,7 @@ h3 {
   transform: scale(1.01);
   transition: all 0.3s ease;
 }
+
+.filter-box {
+  width: 900px;
+}
