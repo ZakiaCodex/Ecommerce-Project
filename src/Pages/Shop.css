@@ -13,7 +13,6 @@
   margin-bottom: 20px;
 }
 
-
 .img-box {
   height: 180px;
   display: flex;
@@ -64,7 +63,7 @@
 .reset-btn {
   width: 100%;
   padding: 8px;
-  background: #FFD90C;
+  background: #ffd90c;
   color: black;
   border: none;
   cursor: pointer;
@@ -91,10 +90,9 @@
   min-height: 400px;
 }
 
-
 .card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 /* IMAGE */
@@ -125,12 +123,12 @@
   font-size: 20px;
   font-weight: bold;
   /* margin-bottom: 10px; */
-   color: #1f2933;
+  color: #1f2933;
 }
 
 /* BUTTONS */
 .cart-btn {
-  background: #FDCB0C;
+  background: #fdcb0c;
   color: rgb(0, 0, 0);
   padding: 8px;
   width: 100%;
@@ -157,7 +155,7 @@
   font-size: 18px;
 }
 
-.Applyfilter{
+.Applyfilter {
   background-color: #000000;
   color: white;
 }

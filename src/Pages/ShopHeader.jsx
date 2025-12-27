@@ -5,24 +5,24 @@ import "./Shop.css";
 
 export default function Shop() {
   const [search, setSearch] = useState("");
-   const [minPrice, setMinPrice] = useState("");
-   const [maxPrice, setMaxPrice] = useState("");
-   const[color,setColor]=useState("")
+  const [minPrice, setMinPrice] = useState("");
+  const [maxPrice, setMaxPrice] = useState("");
+  const [color, setColor] = useState("");
   const [filtered, setFiltered] = useState(products);
 
   // 🔍 Search (only on button click)
-  const handleFilter=()=>{
-const result=products.filter((item)=>{
-    return (
-      item.title.toLowerCase().includes(search.toLowerCase())&& 
-   (!minPrice ||item.price >= Number(minPrice)) &&
-   (!maxPrice || item.price <=Number(maxPrice))&&
-   (!color || item.color===color)
-    )
-  })
-    setFiltered(result)
-  }
-  
+  const handleFilter = () => {
+    const result = products.filter((item) => {
+      return (
+        item.title.toLowerCase().includes(search.toLowerCase()) &&
+        (!minPrice || item.price >= Number(minPrice)) &&
+        (!maxPrice || item.price <= Number(maxPrice)) &&
+        (!color || item.color === color)
+      );
+    });
+    setFiltered(result);
+  };
+
   return (
     <>
       {/* SEARCH */}
@@ -40,10 +40,7 @@ const result=products.filter((item)=>{
       </div>
 
       <div className="page">
-      
-
-
- {/* FILTER */}
+        {/* FILTER */}
         <aside className="filter-box">
           <h3>Price Filter</h3>
 
@@ -61,9 +58,10 @@ const result=products.filter((item)=>{
             onChange={(e) => setMaxPrice(e.target.value)}
           />
 
- <button
-            className="Applyfilter"
-            onClick={handleFilter} > Apply</button>
+          <button className="Applyfilter" onClick={handleFilter}>
+            {" "}
+            Apply
+          </button>
           <button
             className="reset-btn"
             onClick={() => {
@@ -75,27 +73,25 @@ const result=products.filter((item)=>{
             Reset Filters
           </button>
 
-
-          <div className="ByColor" style={{marginTop:"13px"}}>
-            <select value={color} onChange={(e) =>{
-              setColor(e.target.value) 
-              handleFilter()
-            }}
+          <div className="ByColor" style={{ marginTop: "13px" }}>
+            <select
+              value={color}
+              onChange={(e) => {
+                setColor(e.target.value);
+                handleFilter();
+              }}
             >
-  <option value="">All Colors</option>
-  <option value="black">Black</option>
-  <option value="green">Green</option>
-  <option value="yellow">Yellow</option>
-</select>
-
+              <option value="">All Colors</option>
+              <option value="black">Black</option>
+              <option value="green">Green</option>
+              <option value="yellow">Yellow</option>
+            </select>
           </div>
         </aside>
 
         {/* PRODUCTS */}
         <div className="parent">
-          {filtered.length === 0 && (
-            <p className="empty">No products found</p>
-          )}
+          {filtered.length === 0 && <p className="empty">No products found</p>}
 
           {filtered.map((item) => (
             <div className="card" key={item.id}>
