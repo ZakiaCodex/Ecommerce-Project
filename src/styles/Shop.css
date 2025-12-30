@@ -1,0 +1,218 @@
+/* =========================
+   PAGE LAYOUT
+========================= */
+.page {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
+/* =========================
+   SEARCH BOX
+========================= */
+.search-box {
+  background: #003152;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.search-box h2 {
+  color: white;
+  margin-bottom: 10px;
+}
+
+.search-box input {
+  width: 60%;
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+}
+
+/* =========================
+   FILTER BOX
+========================= */
+.filter-box {
+  width: 250px;
+  background: #1f2933;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.filter-box h3 {
+  color: white;
+  margin-bottom: 10px;
+}
+
+.filter-box input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+/* Reset Button */
+.reset-btn {
+  width: 100%;
+  padding: 8px;
+  background: #f44336;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.reset-btn:hover {
+  background: #d32f2f;
+}
+
+/* =========================
+   COLOR FILTER
+========================= */
+.color-filter {
+  margin-top: 20px;
+}
+
+.color-options {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* Color circle base */
+.color-circle {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid #ccc;
+}
+
+.color-circle.black {
+  background-color: black;
+}
+
+.color-circle.green {
+  background-color: green;
+}
+
+.color-circle.yellow {
+  background-color: yellow;
+}
+
+/* All option */
+.color-circle.all {
+  background: linear-gradient(45deg, black, green, yellow);
+}
+
+/* Active state */
+.color-circle.active {
+  border: 3px solid white;
+}
+
+/* =========================
+   BRAND FILTER
+========================= */
+.Bybrand input {
+  width: 100%;
+  padding: 8px;
+}
+
+/* =========================
+   PRODUCTS GRID
+========================= */
+.parent {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  width: 100%;
+}
+
+/* =========================
+   PRODUCT CARD
+========================= */
+.card {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  border: 1px solid #ddd;
+  transition: 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Image */
+.img-box {
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.img-box img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* Text */
+.card h3 {
+  font-size: 15px;
+  color: #1f2933;
+}
+
+.price {
+  font-size: 18px;
+  font-weight: bold;
+  color: #1f2933;
+  margin: 10px 0;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+.cart-btn {
+  width: 100%;
+  padding: 8px;
+  background: #fccd0c;
+  color: black;
+  border: none;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+
+.buy-btn {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  background: black;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+/* =========================
+   EMPTY MESSAGE
+========================= */
+.empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  font-size: 18px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 992px) {
+  .parent {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

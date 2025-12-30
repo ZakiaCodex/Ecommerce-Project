@@ -1,93 +1,62 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import "../styles/auth.css";
 
 export default function Login() {
-  const [Firstname, setFirstname] = useState("");
-  const [Lastname, setLastname] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [submited, setSubmitted] = useState(false);
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
     setSubmitted(true);
   };
 
   return (
-    <div style={{ maxWidth: "600px", margin: "0 auto", padding: "20px" }}>
+    <div className="auth-container">
       <h2>Login</h2>
 
-      {!submited ? (
-        <form onSubmit={handleSubmit}>
-          <div style={{ marginBottom: "15px" }}>
-            <label htmlFor="email">Email</label>
+      {!submitted ? (
+        <form onSubmit={handleSubmit} className="auth-form">
+          <div className="auth-field">
+            <label>Email</label>
             <input
               type="email"
-              value={email}
-              placeholder="Email"
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
-              style={{ width: "100%", padding: "8px", marginTop: "5px" }}
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
             />
           </div>
 
-          <div style={{ marginBottom: "15px" }}>
-            <label htmlFor="firstName">First Name</label>
+          <div className="auth-field">
+            <label>Password</label>
             <input
               type="password"
-              value={password}
-              placeholder="Password"
-              onChange={(e) => {
-                setPassword(e.target.value);
-              }}
-              style={{ width: "100%", padding: "8px", marginTop: "5px" }}
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
             />
           </div>
 
-          <div style={{ marginBottom: "15px" }}>
-            <label style={{ display: "flex", alignItems: "center" }}>
-              <input type="checkbox" style={{ marginRight: "10px" }} />I have
-              read and agree with the <a href="#">terms & condition.</a>
-            </label>
-          </div>
+          <button type="submit" className="auth-btn">
+            Login
+          </button>
 
-          <button type="submit">Login</button>
-
-          <div
-            style={{
-              marginTop: "20px",
-              textAlign: "center",
-              backgroundColor: "#001f3f",
-              color: "#fff",
-              padding: "15px",
-            }}
-          >
-            Already have account?{" "}
-            <a
-              style={{
-                color: "white",
-                marginLeft: "10px",
-                border: "2px solid yellow",
-                padding: "6px",
-              }}
-            >
-              <Link to="/Login">Login</Link>
-            </a>
+          <div className="auth-footer">
+            Don’t have an account?
+            <Link to="/signup"> Signup</Link>
           </div>
         </form>
       ) : (
-        <table>
-          <tr>
-            <th>Company</th>
-            <th>Contact</th>
-            <th>Country</th>
-          </tr>
-          <tr>
-            <td>{Firstname}</td>
-            <td>{Lastname}</td>
-            <td>{email}</td>
-          </tr>
-        </table>
+        <p>Email: {formData.email}</p>
       )}
     </div>
   );

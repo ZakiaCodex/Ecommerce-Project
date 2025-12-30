@@ -1,112 +1,73 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-export default function SignupForm() {
-  const [Firstname, setFirstname] = useState("");
-  const [Lastname, setLastname] = useState("");
-  const [email, setEmail] = useState("");
-  const [submited, setSubmitted] = useState(false);
+import "../styles/auth.css";
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+export default function SignupForm() {
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+  });
+
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
     setSubmitted(true);
   };
 
   return (
-    <div style={{ maxWidth: "600px", margin: "0 auto", padding: "20px" }}>
+    <div className="auth-container">
       <h2>Create Account</h2>
-      <h3 style={{ color: "white", marginBottom: "10px" }}>
-        Please register account detail
-      </h3>
 
-      {!submited ? (
-        <form onSubmit={handleSubmit}>
-          <div style={{ marginBottom: "15px" }}>
-            <label htmlFor="firstName">First Name</label>
+      {!submitted ? (
+        <form onSubmit={handleSubmit} className="auth-form">
+          <div className="auth-field">
+            <label>First Name</label>
             <input
               type="text"
-              value={Lastname}
-              placeholder="First Name"
-              onChange={(e) => {
-                setFirstname(e.target.value);
-              }}
-              style={{ width: "100%", padding: "8px", marginTop: "5px" }}
+              name="firstName"
+              value={formData.firstName}
+              onChange={handleChange}
             />
           </div>
 
-          <div style={{ marginBottom: "15px" }}>
-            <label htmlFor="lastName">Last Name</label>
+          <div className="auth-field">
+            <label>Last Name</label>
             <input
               type="text"
-              value={Lastname}
-              placeholder="Last Name"
-              onChange={(e) => {
-                setLastname(e.target.value);
-              }}
-              style={{ width: "100%", padding: "8px", marginTop: "5px" }}
+              name="lastName"
+              value={formData.lastName}
+              onChange={handleChange}
             />
           </div>
 
-          <div style={{ marginBottom: "15px" }}>
-            <label htmlFor="email">Email</label>
+          <div className="auth-field">
+            <label>Email</label>
             <input
               type="email"
-              value={email}
-              placeholder="Email"
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
-              style={{ width: "100%", padding: "8px", marginTop: "5px" }}
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
             />
           </div>
 
-          <div style={{ marginBottom: "15px" }}>
-            <label style={{ display: "flex", alignItems: "center" }}>
-              <input type="checkbox" style={{ marginRight: "10px" }} />I have
-              read and agree with the <a href="#">terms & condition.</a>
-            </label>
-          </div>
+          <button type="submit" className="auth-btn">
+            CREATE
+          </button>
 
-          <button type="submit">CREATE</button>
-
-          <div
-            style={{
-              marginTop: "20px",
-              textAlign: "center",
-              backgroundColor: "#001f3f",
-              color: "#fff",
-              padding: "15px",
-            }}
-          >
-            Already have account?{" "}
-            <a
-              style={{
-                color: "white",
-                marginLeft: "10px",
-                border: "2px solid yellow",
-                padding: "6px",
-              }}
-            >
-              <Link to="/Login">Login</Link>
-            </a>
+          <div className="auth-footer">
+            Already have an account?
+            <Link to="/login"> Login</Link>
           </div>
         </form>
       ) : (
-        <table className="styled-table">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>LastName</th>
-              <th>Email</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>{Firstname}</td>
-              <td>{Lastname}</td>
-              <td>{email}</td>
-            </tr>
-          </tbody>
-        </table>
+        <p>{formData.email}</p>
       )}
     </div>
   );

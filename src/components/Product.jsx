@@ -4,7 +4,7 @@ import c2 from "../assets/c2.gif";
 import c3 from "../assets/c3.gif";
 
 import s2 from "../assets/s2.gif";
-
+import "../styles/Product.css";
 export const products = [
   {
     title: "iPhone 14 Pro",
