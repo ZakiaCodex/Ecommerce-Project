@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+
 import "../styles/Navbar.css";
 
 import logo3 from "../assets/logo3.png";
@@ -13,27 +14,27 @@ export default function Navbar() {
       <nav className="navbar">
         <ul>
           <li>
-            <Link to="/">Home</Link>
+            <NavLink to="/">Home</NavLink>
           </li>
           <li>
-            <Link to="/about">About</Link>
+            <NavLink to="/about">About</NavLink>
           </li>
           <li>
-            <Link to="/contact">Contact</Link>
+            <NavLink to="/contact">Contact</NavLink>
           </li>
           <li>
-            <Link to="/shop">Shop</Link>
+            <NavLink to="/shop">Shop</NavLink>
           </li>
         </ul>
       </nav>
 
       <div className="login">
-        <Link to="/signup" className="btn">
+        <NavLink to="/signup" className="btn">
           Signup
-        </Link>
-        <Link to="/login" className="btn btn-secondary">
+        </NavLink>
+        <NavLink to="/login" className="btn btn-secondary">
           Login
-        </Link>
+        </NavLink>
       </div>
     </div>
   );

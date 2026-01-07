@@ -37,3 +37,11 @@ a {
   color: black;
   /* margin-right: 40px; */
 }
+.btn {
+  margin-right: 15px;
+  padding: 8px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #ffd90c;
+  color: black;
+}

@@ -69,3 +69,9 @@
   transform: scale(1.01);
   transition: all 0.3s ease;
 }
+.qualited {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  /* flex-direction: column; */
+}
