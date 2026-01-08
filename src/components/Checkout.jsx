@@ -5,6 +5,7 @@ import "../styles/checkout.css";
 export default function Checkout() {
   const { cart, removeFromCart } = useContext(CartContext);
   const [submitted, setSubmitted] = useState(false);
+  console.log(cart);
 
   const [formData, setFormData] = useState({
     email: "",

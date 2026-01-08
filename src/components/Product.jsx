@@ -7,6 +7,7 @@ import s2 from "../assets/s2.gif";
 import "../styles/Product.css";
 export const products = [
   {
+    id: 1,
     title: "iPhone 14 Pro",
     price: 1899,
     discount: "20%",
@@ -16,6 +17,7 @@ export const products = [
     description: "6.7-inch Super Retina XDR display with A16 Bionic chip.",
   },
   {
+    id: 2,
     title: "Galaxy S23 Ultra",
     price: 1699,
     discount: "15%",
@@ -25,6 +27,7 @@ export const products = [
     description: "200MP camera with Snapdragon 8 Gen 2 processor.",
   },
   {
+    id: 3,
     title: "Dell XPS 13",
     price: 1299,
     discount: "10%",
@@ -34,6 +37,7 @@ export const products = [
     description: "13.4-inch InfinityEdge display with Intel Core i7.",
   },
   {
+    id: 4,
     title: "MacBook Air M2",
     price: 1499,
     discount: "18%",
@@ -43,6 +47,7 @@ export const products = [
     description: "Apple M2 chip with lightweight, fanless design.",
   },
   {
+    id: 5,
     title: "Sony XM5",
     price: 399,
     discount: "12%",
@@ -52,6 +57,7 @@ export const products = [
     description: "Industry-leading noise cancellation headphones.",
   },
   {
+    id: 6,
     title: "Bose QC45",
     price: 349,
     discount: "10%",
@@ -61,6 +67,7 @@ export const products = [
     description: "High-fidelity audio with premium comfort.",
   },
   {
+    id: 7,
     title: "AirPods Pro 2",
     price: 249,
     discount: "8%",
