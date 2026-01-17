@@ -1,9 +1,10 @@
 import { useContext, useState } from "react";
-import { CartContext } from "../components/CartContext";
+import { cartcontext } from "../components/ThemeContext";
+import ProductCard from "../components/ProductCard";
 import "../styles/checkout.css";
 
 export default function Checkout() {
-  const { cart, removeFromCart } = useContext(CartContext);
+  const { cart, setCart } = useContext(cartcontext);
   const [submitted, setSubmitted] = useState(false);
   console.log(cart);
 
@@ -24,8 +25,12 @@ export default function Checkout() {
   const handleOrder = () => {
     alert("🎉 Thanks for your order!");
   };
+  const total =
+   cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
-  const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  // const removefromcart = () => {
+  //   setCart(cart.reduce((sum, item) => sum + item.price * item.quantity, 0));
+  // };
 
   return (
     <div className="checkout-page">
@@ -69,14 +74,14 @@ export default function Checkout() {
             {cart.map((item) => (
               <div className="order-item" key={item.id}>
                 <div>
-                  <h4>{item.title}</h4>
+                  <h4>{cart.title}</h4>
                   <p>Qty: {item.quantity}</p>
                 </div>
                 <div>
                   <p>Rs {item.price * item.quantity}</p>
                   <button
                     className="remove-btn"
-                    onClick={() => removeFromCart(item.id)}
+                    onClick={() => removefromcart(item.id)}
                   >
                     ✕
                   </button>
@@ -88,6 +93,7 @@ export default function Checkout() {
 
             <div className="order-total">
               <h3>Total</h3>
+
               <h3>Rs {total}</h3>
             </div>
 

@@ -1,18 +1,18 @@
 import { MdShoppingCart } from "react-icons/md";
 import { useContext } from "react";
-import { useNavigate } from "react-router-dom"; // For programmatic navigation
-import { CartContext } from "../components/CartContext";
+import { useNavigate } from "react-router-dom";
+
+import { cartcontext } from "../components/ThemeContext";
 
 export default function ProductCard({ item }) {
-  const { addToCart } = useContext(CartContext);
+  const { cart, setCart } = useContext(cartcontext);
   const navigate = useNavigate();
 
-  // Function to handle Buy Now
   const handleBuyNow = () => {
-    addToCart(item); // Add product to cart
-    navigate("/Checkout"); // Navigate to checkout page
+    setCart([item]);
+    navigate("/Checkout");
   };
-
+  console.log(item);
   return (
     <div className="card">
       <div className="img-box">
@@ -23,7 +23,7 @@ export default function ProductCard({ item }) {
       <p className="price">Rs {item.price}</p>
 
       {/* Add to Cart */}
-      <button className="cart-btn" onClick={() => addToCart(item)}>
+      <button className="cart-btn" onClick={() => setCart(item)}>
         <MdShoppingCart /> Add to Cart
       </button>
 

@@ -9,11 +9,11 @@ import Footer from "./Pages/Footer";
 import SignupForm from "./Pages/Signup";
 import Login from "./Pages/login";
 import Checkout from "./components/Checkout";
-import { CartProvider } from "./components/CartContext";
+import { CartProvider } from "./components/ThemeContext";
+import ProductCard from "./components/ProductCard";
 
 function App() {
   return (
-    // Wrap everything inside CartProvider
     <CartProvider>
       <Navbar />
       <Routes>
@@ -25,6 +25,7 @@ function App() {
         <Route path="/Login" element={<Login />} />
         <Route path="/Checkout" element={<Checkout />} />
       </Routes>
+      <ProductCard />
       <Footer />
     </CartProvider>
   );
